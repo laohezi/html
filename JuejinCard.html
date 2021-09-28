@@ -28,20 +28,6 @@
             border-bottom: 10px;
             border-color: rgb(95, 25, 25);
             border-radius: 2px;
-            visibility: hidden;
-        }
-
-        .simple {
-
-            margin: auto;
-            background-color: white;
-            width: 700px;
-            height: 140px;
-            padding: 12px 20px 0px;
-            border-bottom: 10px;
-            border-color: rgb(95, 25, 25);
-            border-radius: 2px;
-
         }
 
         div.card:hover {
@@ -78,20 +64,29 @@
 
         .summary {
             white-space: nowrap;
+            overflow: hidden;
             text-overflow: ellipsis;
         }
 
        
 
         .image {
+            position: relative;
             width: 120px;
             height: 100%;
             margin: auto;
-            float: right;
+            float: left;
+        }
+        img{
+            position: absolute;
+            top: 50%;
+            transform: translate(0,-50%);
+
         }
        
         .content {
-            /* width:calc(100% - 120px) ; */
+             width:calc(100% - 160px) ; 
+             float: left;
         }
     </style>
 </head>

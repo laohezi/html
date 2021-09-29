@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Carousel</title>
 
     <style>
         .card {
@@ -13,10 +13,10 @@
             margin: auto;
             width: 600px;
             height: 400px;
-           background-image: url("https://tse4-mm.cn.bing.net/th/id/OIP-C.z3Df540Q7E1ilmnHZPgPNgHaEK?w=312&h=180&c=7&r=0&o=5&dpr=1.25&pid=1.7");
-           background-repeat: no-repeat;
-           background-position: center;
-           background-size: cover;
+            background-image: url("https://tse4-mm.cn.bing.net/th/id/OIP-C.z3Df540Q7E1ilmnHZPgPNgHaEK?w=312&h=180&c=7&r=0&o=5&dpr=1.25&pid=1.7");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
         }
 
         li {
@@ -25,20 +25,33 @@
             height: 10px;
             border-radius: 50%;
             box-sizing: border-box;
-            background-color: aqua;
+            background-color: lightgray;
             float: left;
+            margin: 5px;
+            transition: all .3s;
+                   
         }
+
+        li:hover {
+            background-color: darkgray;
+            transform: scale(1.2);
+
+        }
+
+
 
         .indicator {
             position: absolute;
-            display: table;
+            display: flex;
             background-color: rgba(255, 255, 255, .8);
             bottom: 20px;
             right: 50%;
             transform: translate(50%, 0);
-            border-radius: 30px;   
+            border-radius: 30px;
             text-align: center;
-            padding: 20px,5px;
+            justify-content: center;
+            align-items: center;
+
         }
     </style>
 
@@ -48,20 +61,20 @@
 <body>
 
     <div class="card">
-        <ul class="indicator">
-           <li></li>
-           <li></li>
-           <li></li>
-           <li></li>
-           <li></li>
-           <li></li>
-           <li></li>
-           <li></li>
-           <li></li>
-           <li></li>
-        </ul>
+        <div class="indicator">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            </ul>
 
-    </div>
+        </div>
 
 
 

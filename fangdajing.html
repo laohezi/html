@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            position: relative;
+        }
+
+        .image {
+            position: relative;
+            width: 300px;
+            height: 300px;
+        }
+
+        .overlay {
+            position: absolute;
+            background-color: gray;
+            opacity: .5;
+            width: 200px;
+            height: 200px;
+            z-index: 100;
+            cursor: move;
+            display: none;
+        }
+
+
+
+        .big {
+            position: relative;
+            overflow: hidden;
+            width: 400px;
+            height: 400px;
+             display: none; 
+            float: left;
+            margin-left: 20px;
+
+        }
+
+        .big_content {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+        }
+
+        .oringin {
+            float: left;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class=oringin id="oringin">
+            <div class="overlay" id="overlay"></div>
+            <img class="image" id="image" src="./image/test.jpg" />
+        </div>
+
+        <div class="big" id="big">
+            <img id="big_content" class="big_content" src="./image/test.jpg" />
+        </div>
+
+
+    </div>
+
+
+</body>
+
+<script>
+    var img = document.getElementById('oringin')
+    var overlay = document.getElementById('overlay')
+
+    var bigContent = document.getElementById('big_content')
+    var big = document.getElementById('big')
+
+    var oringin = document.getElementById('oringin')
+
+    var overlayMax;
+
+    var bigMax;
+
+    var ratio;
+
+    img.onmouseover = function () {
+        overlay.style.display = 'inline-block'
+        big.style.display = 'inline-block'
+        overlayMax = img.offsetWidth - overlay.offsetWidth
+        bigMax = bigContent.offsetWidth - big.offsetWidth
+        ratio = bigMax /overlayMax
+
+
+    }
+    img.onmouseout = function () {
+        overlay.style.display = 'none'
+        big.style.display = 'none'
+    }
+
+    img.addEventListener('mousemove', function (e) {
+        var x = e.pageX - oringin.offsetLeft
+        var y = e.pageY - oringin.offsetTop
+        var leftMargin = x - overlay.offsetWidth / 2
+        var topMargin = y - overlay.offsetHeight / 2
+        console.log(leftMargin)
+        if (leftMargin < 0) {
+            overlay.style.left = 0
+        } else if (leftMargin > overlayMax) {
+
+            overlay.style.left = overlayMax + 'px'
+        } else {
+            overlay.style.left = leftMargin + 'px'
+        }
+
+        if (topMargin < 0) {   
+            overlay.style.top = 0
+        } else if (topMargin > overlayMax) {
+
+            overlay.style.top = overlayMax + 'px'
+        } else {
+            overlay.style.top = topMargin + 'px'
+        }
+
+
+        bigContent.style.left = -overlay.offsetLeft * ratio + 'px'
+        bigContent.style.top = -overlay.offsetTop * ratio + 'px'
+
+
+    })
+
+
+
+
+
+
+
+
+
+</script>
+
+</html>

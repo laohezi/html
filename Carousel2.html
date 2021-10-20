@@ -38,10 +38,24 @@
 
         }
 
+        .liitem_checked {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            box-sizing: border-box;
+            background-color: lightgray;
+            float: left;
+            margin: 5px;
+            transition: all .5s;
+            background-color: black;
+            opacity: .9;
+            transform: scale(1.2);
+        }
+
         li:hover {
             background-color: darkgray;
             transform: scale(1.2);
-
         }
 
 
@@ -159,6 +173,8 @@
 
 
 
+
+
         function addImage(i, url) {
             var div = document.createElement('div')
             div.style.backgroundColor = url
@@ -176,11 +192,30 @@
                 // vp.style.transform = "translate("+-100 + '%'+",0)"
                 // vp.style.left = -100 * i + '%'
             }
+
+            toPosition(0)
+        }
+
+        function setCurrentLi(position) {
+            var ul = document.getElementById('indicator')
+            var lis = ul.children
+            for (i = 0; i < lis.length; i++) {
+                var li = lis.item(i)
+                if (i == position) {
+                    li.className = 'liitem_checked'
+                } else {
+                    li.className = 'liitem'
+                }
+            }
         }
 
         function toPosition(position) {
             currentPositon = position
+
             vp.style.transform = "translate(" + -100 * position + '%' + ",0)"
+            setCurrentLi(position)
+
+
         }
 
     </script>

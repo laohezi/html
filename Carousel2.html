@@ -144,7 +144,7 @@
         var indicator = document.getElementById('indicator')
         var currentPositon = 0;
         var colors = [
-            'pink', 'gray', 'blue', 'green'
+            'Pink', 'LightPink', 'HotPink', 'Plum','DeepPink'
         ]
 
         var size = 0;
@@ -187,10 +187,9 @@
             li.className = 'liitem'
             indicator.appendChild(li)
             li.onclick = function () {
-                // vp.style.left = -100*(i-1)+'%
+
                 toPosition(i)
-                // vp.style.transform = "translate("+-100 + '%'+",0)"
-                // vp.style.left = -100 * i + '%'
+
             }
 
             toPosition(0)
@@ -211,11 +210,8 @@
 
         function toPosition(position) {
             currentPositon = position
-
             vp.style.transform = "translate(" + -100 * position + '%' + ",0)"
             setCurrentLi(position)
-
-
         }
 
     </script>

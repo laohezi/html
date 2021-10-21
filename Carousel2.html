@@ -13,6 +13,7 @@
             margin: auto;
             width: 600px;
             height: 400px;
+            overflow: hidden;
         }
 
         .image {
@@ -22,6 +23,15 @@
             background-size: cover;
             width: 100%;
             height: 100%;
+            display: flex;
+            font-size: 150px;
+            color: white;
+            font-weight: 900;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+
+
 
         }
 
@@ -58,6 +68,14 @@
             transform: scale(1.2);
         }
 
+        ul {
+            padding-inline-start: 0;
+            margin-block-start: 0;
+            margin-block-end: 0;
+        }
+
+
+
 
 
         .indicator {
@@ -75,10 +93,11 @@
 
         }
 
-        #vpscroll {
+        .vpscroll {
             position: absolute;
             width: 100%;
             height: 100%;
+
         }
 
 
@@ -92,12 +111,16 @@
         span {
             position: absolute;
             background: white;
-            height: 60px;
-            width: 60px;
+            height: 100px;
+            width: 100px;
             z-index: 2;
             opacity: .5;
             border-radius: 50%;
 
+        }
+
+        span:hover {
+            box-shadow: 2px 2px 20px;
         }
 
         .left {
@@ -122,8 +145,7 @@
     <div class="card">
 
         <div id="vp">
-            <ul id="vpscroll">
-
+            <ul class='vpscroll' id="vpscroll">
             </ul>
 
         </div>
@@ -140,18 +162,50 @@
 
 
     <script>
+
+
         var vp = document.getElementById('vpscroll')
         var indicator = document.getElementById('indicator')
         var currentPositon = 0;
-        var colors = [
-            'Pink', 'LightPink', 'HotPink', 'Plum','DeepPink'
-        ]
+
+
 
         var size = 0;
 
-        for (let i = 0; i < colors.length; i++) {
-            size = colors.length
-            addImage(i, colors[i])
+        var items = [
+            {
+                text: '一',
+                color: 'LightPink'
+            },
+            {
+                text: '二',
+                color: 'Violet'
+            },
+            {
+                text: '三',
+                color: 'DodgerBlue'
+            },
+            {
+                text: '四',
+                color: 'DeepSkyBlue'
+            },
+            {
+                text: '五',
+                color: 'DarkCyan'
+            },
+            {
+                text: '六',
+                color: 'Turquoise'
+            },
+            {
+                text: '七',
+                color: 'FireBrick'
+            }
+        ]
+
+        for (let i = 0; i < items.length; i++) {
+            size = items.length
+            addItem(i, items[i],)
         }
 
         var left = document.getElementById('left')
@@ -172,15 +226,14 @@
 
 
 
+        q
 
 
-
-        function addImage(i, url) {
+        function addItem(i, item) {
             var div = document.createElement('div')
-            div.style.backgroundColor = url
+            div.style.backgroundColor = item.color
+            div.innerText = item.text
             div.className = "image"
-
-
             div.style.left = 100 * i + '%'
             vp.appendChild(div)
             var li = document.createElement('li')
